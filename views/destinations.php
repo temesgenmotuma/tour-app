@@ -1,7 +1,5 @@
 <?php
-    require_once '../util/functions.php';
-    dumpAndDie($_SERVER);
-
+ 
 ?>
 
 

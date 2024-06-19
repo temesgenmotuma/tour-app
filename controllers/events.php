@@ -1,3 +1,2 @@
 <?php
-
-    require_once 'views/events.php';
+    render('events.php',[]);

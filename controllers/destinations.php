@@ -1,4 +1,6 @@
 <?php
-
-    require_once 'views/destinations.php';
+  
+   render('destinations.php',[]);
+ 
+   
     

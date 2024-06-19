@@ -1,10 +1,12 @@
 <?php
+
+    $router->get('/tour/','controllers/index.php');
+    $router->get('/tour/views/destinations','controllers/destinations.php');
+    $router->get('/tour/views/event','controllers/events.php');
+    $router->get('/tour/views/bookmarks','controllers/bookmarks.php');
+    $router->get('/tour/views/aboutus','controllers/aboutus.php');
+
+    $router->get('/tour/views/register','controllers/getRegister.php');
+    $router->post('/tour/views/register','controllers/postRegister.php');
+        
     
-    return  [
-        '/tour/' => 'controllers/index.php',
-        '/tour/views/destinations' =>'controllers/destinations.php',
-        '/tour/views/event' =>'controllers/events.php',
-        '/tour/views/bookmarks' => 'controllers/bookmarks.php',
-        '/tour/views/aboutus' => 'controllers/aboutus.php'
-    ];
-?>

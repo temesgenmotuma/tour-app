@@ -1,0 +1,6 @@
+<?php
+
+
+render('register.php');
+
+

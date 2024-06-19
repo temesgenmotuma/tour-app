@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>About us</h1>
+    <h1>Events</h1>
 </body>
 </html>

@@ -1,3 +1,6 @@
 <?php
+    
 
-    require_once 'views/index.php';
+    
+    render('index.php',[]);
+    

@@ -1,5 +1,6 @@
 <?php
-
+echo mysqli_connect_errno();
+// require_once mysqli;
 class Database {
     private $host;
     private $username;
@@ -49,4 +50,4 @@ class Database {
     }
 }
 
-?>
+
