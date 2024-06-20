@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+//TODO SESSION NOT BEING SET 
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'tour_guide') {
+    header('Location: /views/login.php');
+    exit();
+}
 $servername = "localhost";
 $username = "teme";
 $password = "12345678";
@@ -12,7 +17,10 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$stmt = $conn->prepare("SELECT id, name, description, location, image_url FROM destinations");
+$tour_guide_id = $_SESSION['id'];
+
+$stmt = $conn->prepare("SELECT id, name, description, location, image_url FROM destinations WHERE tour_guide_id = ?");
+$stmt->bind_param('i', $tour_guide_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -59,10 +67,22 @@ $result = $stmt->get_result();
                         <img src="<?php echo htmlspecialchars($row["image_url"], ENT_QUOTES, 'UTF-8') ?>" alt="Image of <?php echo htmlspecialchars($row["name"], ENT_QUOTES, 'UTF-8') ?>" >
                         <!-- <img src="' . htmlspecialchars($row["image_url"], ENT_QUOTES, 'UTF-8') . '" alt="Image of ' . htmlspecialchars($row["name"], ENT_QUOTES, 'UTF-8') . '">'; -->
                     <?php } ?>
+
+                    <div>
+                        <a href="/tour/views/guide/updateDestination?id=<?php echo $row['id'] ?>">Edit</a>
+                    </div>
+
+                    <!-- TODO DELETE Destinations -->
+                    <form action="/tour/views/guide/deleteDestination" method="POST" >
+                        <input type="hidden" name="id" value="<?php echo $row['id'];?>" />
+                        <input type="submit" name="Delete" value="Delete"  />
+                    </form>
                 </div>   
             <?php } ?>
         <?php } else { ?>
             <p>No destinations found.</p>
+            <!-- TODO CREATE A LINK TO  -->
+            <a href="/tour/views/guide/addDestination">Create now</a>
         <?php } ?>
         <?php    
             $stmt->close();

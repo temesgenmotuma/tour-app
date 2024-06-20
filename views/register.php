@@ -1,17 +1,25 @@
 <?php
+session_start();
 require '../util/functions.php';
+
+if (isset($_SESSION['role'])) {
+  header('Location: /tour/views/index.php');
+  exit();
+}
+
+$message = ["success"=>"","error"=> ""];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     $username = $_POST['username'];
-    $phone = $_POST['phone'];
     $role = $_POST['role']; 
+    if($role ==='tour_guide')
+      $phone = $_POST['phone'];
 
     //TODO VALIDATE DONE ON THE FRONT
 
 
-    
     $conn = new mysqli('localhost', 'teme', '12345678', 'tour');
     
     if ($conn->connect_error) {
@@ -20,44 +28,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     //TODO CHECK IF THE ACCOUNT ALREADY EXISTS
     
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");    
-    $stmt->bind_param("s", $email);
+      //TODO CHECK FOR THE GUIDE ACCOUNT
 
-    $stmt->execute();
-    $user = $stmt->fetch();
+    if ($role ==="tour_guide"){
+     
+      $stmt = $conn->prepare("SELECT id,email,username FROM guides WHERE email = ?");    
+      $stmt->bind_param("s", $email);
+  
+      $stmt->execute();
+      $result = $statement->get_result();
+      $user = $result->fetch_assoc();
+      
     
+    } 
+
+    //TODO CHECK FOR THE USER ACCOUNT
+    else if ($role === "user"){
+      
+      $stmt = $conn->prepare("SELECT id,email,username FROM users WHERE email = ?");    
+      $stmt->bind_param("s", $email);
+  
+      $stmt->execute();
+      $result = $statement->get_result();
+      $user = $result->fetch_assoc();
     
+    }
+    
+    //branch if user exists or doesn't for both user and guide
     if($user){
+
+        //TODO DISPLAY INFORMATION THAT THE user already exists
         //user already exists
-        header("location: /tour/views/login.php");
-        exit();
+
+        $message['error'] = 'A user already exists with the credentials you entered.';
+        /* header("Location: /tour/views/login");
+        exit(); */
 
     } else {
 
         //TODO new user; add to the database and then log the user in and redirect
+       
+        if($role ==='tour_guide'){
 
-        $stmt = $conn->prepare("INSERT INTO users (username,email,phoneno ,password, role) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $username,$email,$phone, $password, $role);
+          $stmt = $conn->prepare("INSERT INTO guides (username,email,phoneno ,password) VALUES (?, ?, ?, ?)");
+          $stmt->bind_param("ssss", $username,$email,$phone, $password);
     
+        } 
+        else if($role ==='user'){
+
+          $stmt = $conn->prepare("INSERT INTO users (username,email,password ) VALUES (?, ?, ?)");
+          $stmt->bind_param("sss", $username,$email,$password);
+      
+        }
+
         if ($stmt->execute()) {
-            echo "Registration successful!";
+            $message['success'] = "Registration successful!";
             
-            //TODO mark that the user has logged in
-            $_SESSION['user'] = [
-                'email' => $email,
-                ///may be add 
-            ];
+            //mark that the user has logged in
+            
+            //TODO ROLE IS NOT BEING SET HERE FIX
+            $_SESSION['username'] = $username;
+            $_SESSION['email'] = $email;
+            $_SESSION['role'] = $role;
 
         } else {
-            echo "Error: " . $stmt->error;
+            $message['error'] = "Error: " . $stmt->error;
         }
     
         $stmt->close();
         $conn->close();
+        header("Location: /tour/views/index.php");
+        exit();
+
     }
 
-    header("location: /tour/index.php");
-    exit();
 
     
 }
@@ -135,9 +179,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for ="role">Role</label> 
                 <select id="role" name="role" required>
                     <option value="user">User</option>
-                    <option value="tour_agent">Tour Agent</option>
+                    <option value="tour_guide">Tour Guide</option>
                 </select><br>
             </div>
+            <p>
+              <?php echo $message['error']; ?>
+            </p>
             <div class="input-group input-button">
               <button type="submit">Create Account</button>
             </div>

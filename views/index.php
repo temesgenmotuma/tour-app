@@ -1,8 +1,10 @@
 <?php
+require_once '../util/functions.php';
 session_start();
+// dumpAndDie('Here');
 
 if (!isset($_SESSION['role'])) {
-    header('Location: /views/login.php');
+    header('Location: /tour/views/login');
     exit();
 }
 

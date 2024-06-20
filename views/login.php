@@ -1,13 +1,20 @@
 <?php
 session_start();
 
+// require_once '../util/functions.php';
+
+if (isset($_SESSION['role'])) {
+  header('Location: /views/dashboard.php');
+  exit();
+}
+
+//todo display the error in the html template
+$error = "";
+
 // LOGIN THE USER IF THE CREDENTIALS MATCH
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
-
-    //todo display the error in the html template
-    $error = "";
 
     $conn = new mysqli('localhost', 'teme', '12345678', 'tour');
 
@@ -15,34 +22,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare("SELECT id, email, role FROM users WHERE email = ?");
+    //CHECK IF THE USER IS IN THE USERS TABLE 
+    $stmt = $conn->prepare("SELECT id,email,username,password FROM users WHERE email = ?");
     $stmt->bind_param('s', $email);
     $stmt->execute();
-    $stmt->store_result();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    
+    //label as user if found in users table
+    if($user)
+      $role = 'user';  
+    else {
+      //ELSE IF USER NOT IN USER check if in guides 
+        $stmt = $conn->prepare("SELECT id,username,email,password FROM guides WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+        
+        // Change role if found in guides table
+        if($user)
+          $role = 'tour_guide';  
+    }
 
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $hashed_password, $role);
-        $stmt->fetch();
+    if ($user && password_verify($password, $user['password'])) {
+        
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $role;
+        header("Location: /tour/views/index.php");
+        exit();
 
-        if (password_verify($password, $hashed_password)) {
-            //Verifies that a password matches a hash
-            //store the sessions
-            $_SESSION['email'] = $email;
-            $_SESSION['username'] = $username;
-            $_SESSION['role'] = $role;
-
-            header('Location: index.php');
-            exit();
-        } else {
-            $error = "Invalid password.";
-        }
     } else {
-        $error = "No user found with that Email.";
+        $error = "Invalid email or password.";
     }
 
     $stmt->close();
     $conn->close();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -78,6 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             placeholder="enter password"
           />
         </div>
+        <p>
+          <?php echo $error; ?>
+        </p>
         <p>
           Don't have an account?
           <a
