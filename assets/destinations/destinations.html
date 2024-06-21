@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/img/web-logo.png" />
+    <link rel="stylesheet" href="./assets/css/general.css" />
+    <link rel="stylesheet" href="./assets/css/destinations.css" />
+    <title>Travel App - Places</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <p><span>Tour</span> <strong>App</strong></p>
+        <ul class="list__navigations">
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Bookmarks</a></li>
+        </ul>
+        <button class="btn__img--name">
+          <span class="btn__img">
+            <object
+              type="image/svg+xml"
+              data="./assets/img/profile-circle-svgrepo-com.svg"
+            >
+              Your browser does not support SVG.
+            </object>
+          </span>
+          <!-- <span>Sign in </span> -->
+        </button>
+      </nav>
+    </header>
+    <main>
+      <div class="search__container">
+        <div class="search__container-inputs">
+          <input
+            type="text"
+            class="search search__places"
+            placeholder="Search for places"
+          />
+          <input
+            type="text"
+            class="search search__events"
+            placeholder="Search for events"
+          />
+        </div>
+        <button class="search-button">
+          <object type="image/svg+xml" data="./assets/img/search.svg">
+            Your browser does not support SVG.
+          </object>
+        </button>
+        <div id="error-message" class="error-message">
+          <!-- to display search not found -->
+          No places found
+        </div>
+      </div>
+      <!--      <?php
+session_start();
+
+$servername = "localhost";
+$username = "teme";
+$password = "12345678";
+$dbname = "tour";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) { die("Connection failed: " . $conn->connect_error); }
+      $stmt = $conn->prepare("SELECT id, name, description, location, image_url
+      FROM destinations"); $stmt->execute(); $result = $stmt->get_result(); ?> -->
+      <!-- --------------- -->
+
+      <!--here was your code above and below-->
+
+      <!-- ---------- -->
+      <!-- <h1>Explore Our Destinations</h1>
+      <div class="destinations-container"> -->
+      <section class="section__discover">
+        <h1>Explore Our Destinations</h1>
+        <div class="grid__container">
+          <div class="grid-item">
+            <img
+              src="./assets/img/img-europe/italy/alex-vasey-F5HtPjpBb9k-unsplash.jpg"
+              alt="Image 1"
+              class="grid-item__image"
+            />
+            <div class="grid-item__details">
+              <h3>Africa</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <?php if ($result->num_rows > 0) { ?> -->
+      <!-- // Loop over each record and display its attributes -->
+      <!-- <?php while($row = $result->fetch_assoc()) { ?>
+                <div class="destination">
+                    <h2> <?php echo htmlspecialchars($row["name"], ENT_QUOTES, 'UTF-8') ?></h2>
+                    <p> <?php echo htmlspecialchars($row["description"], ENT_QUOTES, 'UTF-8') ?></p>
+                    <p> Location: <?php echo htmlspecialchars($row["location"], ENT_QUOTES, 'UTF-8') ?></p>
+                    <?php if ($row["image_url"]) { ?>
+                        <img src="<?php echo htmlspecialchars($row["image_url"], ENT_QUOTES, 'UTF-8') ?>" alt="Image of <?php echo htmlspecialchars($row["name"], ENT_QUOTES, 'UTF-8') ?>" >
+                    <?php } ?>
+                </div>   
+            <?php } ?>
+        <?php } else { ?>
+            <p>No destinations found.</p>
+        <?php } ?>
+        <?php    
+            $stmt->close();
+            $conn->close();
+        ?> 
+      </div>-->
+    </main>
+  </body>
+</html>

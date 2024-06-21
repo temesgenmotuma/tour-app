@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+*:focus {
+  outline: rgba(0, 0, 0, 0.6);
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 37.5rem;
+  margin: 3.1rem auto;
+  padding: 1.2rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  color: #076549;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #076549;
+}
+
+input {
+  color: #555a60;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+textarea.form-control {
+  height: 6.25rem;
+  resize: vertical;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #076549;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #076549;
+}
+
+.btn-primary:hover {
+  background-color: #05513a;
+}

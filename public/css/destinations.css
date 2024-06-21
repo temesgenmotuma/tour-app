@@ -1,0 +1,50 @@
+h1 {
+  margin-bottom: 1rem;
+}
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.grid-item__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.grid-item__details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.grid-item:hover .grid-item__details {
+  opacity: 1;
+}
+
+.grid-item:hover .grid-item__image {
+  opacity: 0.5;
+}
+
+.grid__container {
+  height:18rem;
+}

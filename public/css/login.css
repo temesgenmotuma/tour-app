@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f7f7f7;
+  color: #087f5b;
+  margin: 0;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+*:focus {
+  outline: 2px solid #e67e22;
+  box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+}
+
+h2 span {
+  color: #e67e22;
+}
+
+.login__container {
+  background: #f7f7f7;
+  padding: 1.25rem 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 20rem;
+  margin-bottom: 2rem;
+}
+
+.login__container h2 {
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: #087f5b;
+}
+
+.input-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group button {
+  /* width: 100%; */
+  padding: 0.8rem 1.6rem;
+  background: #e67e22;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.input-group button:hover {
+  background: #c86d1c;
+}
+
+p a:link,
+p a:visited {
+  color: #e67e22;
+}
+p a:hover,
+p a:active {
+  color: #c86d1c;
+}
+
+.error-message-inline {
+  display: block;
+  color: rgb(214, 56, 56);
+  /* margin-bottom: 0.6rem; */
+}
+.input-button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+footer {
+  margin-bottom: 1rem;
+}

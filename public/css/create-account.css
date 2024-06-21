@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  background: #f7f7f7;
+  color: #087f5b;
+  margin-top: 3rem;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+*:focus {
+  outline: 2px solid #e67e22;
+  box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+}
+
+h2 span {
+  color: #e67e22;
+}
+
+.login__container {
+  background: #f7f7f7;
+  padding: 1.25rem 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 50%;
+  margin-bottom: 2rem;
+}
+
+.login__container h2 {
+  margin-bottom: 2rem;
+}
+
+.login__container-group {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.input-group {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 1rem;
+  color: #555;
+}
+
+input[type="radio"] {
+  display: inline-block;
+  margin-right: 1rem;
+  width: 1em;
+  height: 1em;
+}
+
+input[type="radio"]:focus {
+  outline-offset: unset;
+  outline: none;
+  box-shadow: none;
+}
+
+input[type="radio"]::selection {
+  outline-offset: unset;
+  outline: none;
+}
+
+.input-group button {
+  padding: 0.8rem 1.6rem;
+  background: #e67e22;
+  border: none;
+  border-radius: 0.3rem;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.input-group button:hover {
+  background: #c86d1c;
+}
+
+.error-message-inline {
+  display: block;
+  color: rgb(214, 56, 56);
+}
+.input-button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+footer {
+  margin-bottom: 1rem;
+}

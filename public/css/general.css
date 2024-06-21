@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  color: #343a40;
+}
+
+header {
+  font-weight: 600;
+  background-color: #087f5b;
+  color: #fff;
+  padding: 2rem 1.5rem 0 1.5rem;
+  margin-bottom: 2.4rem;
+}
+
+nav p {
+  letter-spacing: -0.1rem;
+  word-spacing: -1rem;
+  font-weight: 700;
+  font-size: 2rem;
+  padding-left: 1.6rem;
+}
+
+nav p span {
+  color: #e67e22;
+  display: inline-block;
+}
+
+button {
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  background-color: inherit;
+  border: none;
+}
+
+object {
+  display: inline-block;
+}
+
+section {
+  max-width: 80rem;
+  margin: 0 auto 7rem auto;
+}
+
+h2 {
+  color: #07674a;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  color: #07674a;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+nav {
+  display: flex;
+  padding: 0 1rem 0.5rem 1rem;
+  justify-content: space-between;
+  /* padding: 0 4rem; */
+}
+
+.hidden-el {
+  opacity: 0;
+}
+
+.btn__img--name {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  color: inherit;
+  font-size: large;
+  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+}
+
+.btn__img {
+  pointer-events: none;
+}
+
+.nav__logo img {
+  width: 7rem;
+  height: 7rem;
+  transform: scale(2);
+}
+
+/* btn__img--name */
+
+.list__navigations {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  margin-right: 1rem;
+  align-items: center;
+}
+
+.list__navigations a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.list__navigations a:hover {
+  color: inherit;
+  border-bottom: 3px solid #fff;
+  border-radius: 2px;
+}
+
+/* Search Container Styles */
+.search__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.search__container-inputs {
+  border: 2px solid #087f5b;
+  border-radius: 100px 0 0 100px;
+}
+
+/* Search Input Styles */
+.search {
+  padding: 1rem;
+  border: none;
+  border-radius: 10rem 0 0 10rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+  color: #5b5656;
+  width: 18rem;
+  outline: none;
+  caret-color: #07674a;
+}
+
+.search__places {
+  border-right: 1px solid #087f5b;
+}
+
+/* Search Button Styles */
+.search-button {
+  padding: 0.2rem 1.6rem;
+  background-color: #087f5b;
+  color: white;
+  border: none;
+  border-radius: 0 100px 100px 0;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+}
+
+.search-button:hover {
+  background-color: #07674a;
+}
+
+.error-message {
+  position: absolute;
+  top: 100%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  background-color: #f4f4f4;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  color: #e67e22;
+  font-size: 1.2rem;
+  /* display: none; */
+  border-radius: 5px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.error-message-inline {
+  color: rgb(188, 40, 40);
+}
+
+.grid__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 1.25rem;
+  padding: 0 0 1.25rem 0;
+  width: 100%;
+  height: 18rem;
+}

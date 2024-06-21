@@ -9,12 +9,17 @@ if (!isset($_SESSION['role'])) {
 }
 
 $role = $_SESSION['role'];
+
+// $roleExists = isset($_SESSION['role']);
+// if ($roleExists) {
+//     $role = $_SESSION['role'];
+// }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Home</title>
 </head>
 <body>
     <h1>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
